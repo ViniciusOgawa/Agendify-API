@@ -14,8 +14,17 @@ const userSchemaRequest = userSchema.omit({
 
 const userSchemaResponse = userSchema.extend({
     createdAt: z.string(),
+    deletedAt: z.string().nullable(),
+    updatedAt: z.string(),
+    id: z.string(),
 }).omit({
     password: true
 })
 
-export { userSchema, userSchemaRequest, userSchemaResponse }
+const userSchemaUpdate = userSchema.partial().omit({
+    id: true
+});
+
+const userSchemaArray = userSchemaResponse.array()
+
+export { userSchema, userSchemaRequest, userSchemaResponse, userSchemaUpdate, userSchemaArray }
