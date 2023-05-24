@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken"
 import "dotenv/config"
 
 
-const createTokenService = async ({ email, password }: TLoginRequest): Promise<string> => {
+const createTokenService = async ({ email, password }: TLoginRequest): Promise<object> => {
 
     const userRepository = AppDataSource.getRepository(User)
 
@@ -36,7 +36,12 @@ const createTokenService = async ({ email, password }: TLoginRequest): Promise<s
         }
     )
 
-    return token
+    const response = {
+        token: token,
+        user: user
+    }
+
+    return response
 
 }
 
