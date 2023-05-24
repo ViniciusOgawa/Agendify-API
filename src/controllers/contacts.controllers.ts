@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
-import { createContactService } from "../services/contacts/createContact.service";
-import { TContactArray } from "../interfaces/contact.interfaces";
-import { listContactService } from "../services/contacts/listContact.service";
-import { updateContactSerice } from "../services/contacts/updateContact.service";
-import { deleteContactService } from "../services/contacts/deleteContact.service";
+import { Request, Response } from "express"
+import { createContactService } from "../services/contacts/createContact.service"
+import { TContactArray } from "../interfaces/contact.interfaces"
+import { listContactService } from "../services/contacts/listContact.service"
+import { updateContactSerice } from "../services/contacts/updateContact.service"
+import { deleteContactService } from "../services/contacts/deleteContact.service"
 
 
 const createContactController = async (req: Request, res: Response) => {
@@ -21,7 +21,7 @@ const listContactController = async (req: Request, res: Response) => {
 
     const userId = req.user.id
 
-    const contacts: TContactArray = await listContactService(userId);
+    const contacts: TContactArray = await listContactService(userId)
 
     return res.json(contacts)
 
@@ -29,23 +29,23 @@ const listContactController = async (req: Request, res: Response) => {
 
 const updateContactController = async (req: Request, res: Response) => {
 
-    const contactData = req.body;
+    const contactData = req.body
 
-    const contactId = req.params.id;
+    const contactId = req.params.id
 
-    const updatedContact = await updateContactSerice(contactData, contactId);
+    const updatedContact = await updateContactSerice(contactData, contactId)
 
-    return res.json(updatedContact);
+    return res.json(updatedContact)
 
 }
 
 const deleteContactController = async (req: Request, res: Response) => {
 
-    const idContact = req.params.id;
+    const idContact = req.params.id
 
-    await deleteContactService(idContact);
+    await deleteContactService(idContact)
 
-    return res.status(204).send();
+    return res.status(204).send()
 
 }
 

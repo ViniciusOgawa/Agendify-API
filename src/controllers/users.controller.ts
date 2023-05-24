@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
-import { TUserArray, TUserRequest } from "../interfaces/users.interfaces";
-import { createUserService } from "../services/users/createUser.service";
-import { updateUserService } from "../services/users/updateUser.service";
-import { listUserService } from "../services/users/listUser.service";
-import { deleteUserService } from "../services/users/deleteUser.service";
+import { Request, Response } from "express"
+import { TUserArray, TUserRequest } from "../interfaces/users.interfaces"
+import { createUserService } from "../services/users/createUser.service"
+import { updateUserService } from "../services/users/updateUser.service"
+import { listUserService } from "../services/users/listUser.service"
+import { deleteUserService } from "../services/users/deleteUser.service"
 
 const createUserController = async (req: Request, res: Response) => {
 
@@ -17,19 +17,19 @@ const createUserController = async (req: Request, res: Response) => {
 
 const updateUserController = async (req: Request, res: Response) => {
 
-    const userData = req.body;
+    const userData = req.body
 
-    const userId = req.params.id;
+    const userId = req.params.id
 
-    const updatedUser = await updateUserService(userData, userId);
+    const updatedUser = await updateUserService(userData, userId)
 
-    return res.json(updatedUser);
+    return res.json(updatedUser)
 
 }
 
 const listUserController = async (req: Request, res: Response) => {
 
-    const users: TUserArray = await listUserService();
+    const users: TUserArray = await listUserService()
 
     return res.json(users)
 
@@ -37,11 +37,11 @@ const listUserController = async (req: Request, res: Response) => {
 
 const deleteUserController = async (req: Request, res: Response) => {
 
-    const idUser = req.params.id;
+    const idUser = req.params.id
 
-    await deleteUserService(idUser);
+    await deleteUserService(idUser)
 
-    return res.status(204).send();
+    return res.status(204).send()
 
 }
 

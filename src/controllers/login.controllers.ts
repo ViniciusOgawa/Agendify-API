@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { createTokenService } from "../services/login/createToken.service";
+import { Request, Response } from "express"
+import { createTokenService } from "../services/login/createToken.service"
 
 const createTokenController = async (req: Request, res: Response) => {
 

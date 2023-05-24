@@ -1,6 +1,6 @@
 import { z } from "zod"
-import { DeepPartial } from "typeorm";
-import { contactSchema, contactSchemaArray, contactSchemaRequest, contactSchemaResponse } from "../schemas/contact.schema";
+import { DeepPartial } from "typeorm"
+import { contactSchema, contactSchemaArray, contactSchemaRequest, contactSchemaResponse } from "../schemas/contact.schema"
 
 type TContact = z.infer<typeof contactSchema>
 type TContactRequest = z.infer<typeof contactSchemaRequest>
