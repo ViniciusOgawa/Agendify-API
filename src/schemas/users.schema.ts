@@ -16,7 +16,6 @@ const userSchemaResponse = userSchema.extend({
     createdAt: z.string(),
     deletedAt: z.string().nullable(),
     updatedAt: z.string(),
-    id: z.string(),
 }).omit({
     password: true
 })

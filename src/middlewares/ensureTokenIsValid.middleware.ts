@@ -20,7 +20,7 @@ const ensureTokenIsValid = (req: Request, res: Response, next: NextFunction): Re
         }
 
         req.user = {
-            id: Number(decoded?.sub)
+            id: String(decoded?.sub)
         }
 
         return next();

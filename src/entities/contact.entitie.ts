@@ -22,9 +22,6 @@ class Contact {
     @UpdateDateColumn({ type: "date" })
     updatedAt: string;
 
-    @DeleteDateColumn({ type: "date" })
-    deletedAt: string;
-
     @ManyToOne(() => User, user => user.contacts)
     user: User
 
