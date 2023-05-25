@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, DeleteDateColumn, UpdateDateColumn } from "typeorm";
-import { User } from "./user.entitie";
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, DeleteDateColumn, UpdateDateColumn } from "typeorm"
+import { User } from "./user.entitie"
 
 @Entity("contacts")
 class Contact {
@@ -11,16 +11,16 @@ class Contact {
     name: string
 
     @Column({ type: "varchar", length: 125, unique: true })
-    email: string;
+    email: string
 
     @Column()
     phoneNumber: number
 
     @CreateDateColumn({ type: "date" })
-    createdAt: string;
+    createdAt: string
 
     @UpdateDateColumn({ type: "date" })
-    updatedAt: string;
+    updatedAt: string
 
     @ManyToOne(() => User, user => user.contacts)
     user: User
