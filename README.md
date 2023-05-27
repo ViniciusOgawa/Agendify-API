@@ -15,7 +15,7 @@ POST /login: Gera o token de autenticação.\
 POST /contacts: Cria um contato.\
 GET /contacts: Lista todos os contatos criados pelo usuario logado.\
 PATCH /contacts/:id: Atualiza um contato.\
-DELETE /contacts/:id: eleta um contato.\
+DELETE /contacts/:id: eleta um contato.
 
 ## Como executar o Projeto
 
