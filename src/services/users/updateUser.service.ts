@@ -3,26 +3,35 @@ import { AppDataSource } from "../../data-source";
 import { User } from "../../entities/user.entitie";
 import { TUSerResponse, TUserUpdate } from "../../interfaces/users.interfaces";
 import { userSchemaResponse } from "../../schemas/users.schema";
+import bcrypt from "bcryptjs";
 
-const updateUserService = async (userData: TUserUpdate, userId: string): Promise<TUSerResponse> => {
+const updateUserService = async (
+  userData: TUserUpdate,
+  userId: string
+): Promise<TUSerResponse> => {
+  const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-    const userRepository: Repository<User> = AppDataSource.getRepository(User);
+  const oldUserData = await userRepository.findOneBy({
+    id: userId,
+  });
 
-    const oldUserData = await userRepository.findOneBy({
-        id: userId
-    });
+  let hashPassword = "";
 
-    const user = userRepository.create({
-        ...oldUserData,
-        ...userData
-    });
+  if (userData.password) {
+    hashPassword = bcrypt.hashSync(userData.password, 10);
+    userData.password = hashPassword;
+  }
 
-    await userRepository.save(user);
+  const user = userRepository.create({
+    ...oldUserData,
+    ...userData,
+  });
 
-    const updatedUser = userSchemaResponse.parse(user);
+  await userRepository.save(user);
 
-    return updatedUser;
+  const updatedUser = userSchemaResponse.parse(user);
 
-}
+  return updatedUser;
+};
 
-export { updateUserService }
+export { updateUserService };
