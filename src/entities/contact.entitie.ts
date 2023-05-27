@@ -14,7 +14,7 @@ class Contact {
     email: string
 
     @Column()
-    phoneNumber: number
+    phoneNumber: string
 
     @CreateDateColumn({ type: "date" })
     createdAt: string
