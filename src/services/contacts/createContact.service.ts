@@ -1,9 +1,9 @@
-import { AppDataSource } from "../../data-source";
-import { Contact } from "../../entities/contact.entitie";
-import { User } from "../../entities/user.entitie";
-import { AppError } from "../../errors";
-import { TContactRequest, TContactResponse } from "../../interfaces/contact.interfaces";
-import { contactSchemaResponse } from "../../schemas/contact.schema";
+import { AppDataSource } from "../../data-source"
+import { Contact } from "../../entities/contact.entitie"
+import { User } from "../../entities/user.entitie"
+import { AppError } from "../../errors"
+import { TContactRequest, TContactResponse } from "../../interfaces/contact.interfaces"
+import { contactSchemaResponse } from "../../schemas/contact.schema"
 
 
 const createContactService = async ({ email, phoneNumber, name }: TContactRequest, userId: string): Promise<TContactResponse> => {
@@ -16,7 +16,7 @@ const createContactService = async ({ email, phoneNumber, name }: TContactReques
     })
 
     if (!user) {
-        throw new AppError("User not exists", 404);
+        throw new AppError("User not exists", 404)
     }
 
     const contact: Contact = contactRepository.create({

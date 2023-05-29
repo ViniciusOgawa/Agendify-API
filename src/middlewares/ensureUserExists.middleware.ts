@@ -1,12 +1,12 @@
-import { NextFunction, Request, Response } from "express";
-import { Repository } from "typeorm";
-import { AppDataSource } from "../data-source";
-import { User } from "../entities/user.entitie";
-import { AppError } from "../errors";
+import { NextFunction, Request, Response } from "express"
+import { Repository } from "typeorm"
+import { AppDataSource } from "../data-source"
+import { User } from "../entities/user.entitie"
+import { AppError } from "../errors"
 
 const ensureUserExists = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 
-    const userRepository: Repository<User> = AppDataSource.getRepository(User);
+    const userRepository: Repository<User> = AppDataSource.getRepository(User)
 
     const findUser: User | null = await userRepository.findOne({
         where: {
@@ -15,10 +15,10 @@ const ensureUserExists = async (req: Request, res: Response, next: NextFunction)
     })
 
     if (!findUser) {
-        throw new AppError("User not found", 404);
+        throw new AppError("User not found", 404)
     }
 
-    return next();
+    return next()
 
 }
 

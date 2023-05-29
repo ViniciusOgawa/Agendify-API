@@ -5,7 +5,7 @@ const userSchema = z.object({
     name: z.string(),
     email: z.string().email(),
     password: z.string(),
-    phoneNumber: z.number()
+    phoneNumber: z.string()
 })
 
 const userSchemaRequest = userSchema.omit({

@@ -1,9 +1,9 @@
-import { AppDataSource } from "../../data-source";
-import { Contact } from "../../entities/contact.entitie";
-import { User } from "../../entities/user.entitie";
-import { AppError } from "../../errors";
-import { TContactArray } from "../../interfaces/contact.interfaces";
-import { contactSchemaArray } from "../../schemas/contact.schema";
+import { AppDataSource } from "../../data-source"
+import { Contact } from "../../entities/contact.entitie"
+import { User } from "../../entities/user.entitie"
+import { AppError } from "../../errors"
+import { TContactArray } from "../../interfaces/contact.interfaces"
+import { contactSchemaArray } from "../../schemas/contact.schema"
 
 
 const listContactService = async (userId: string): Promise<TContactArray> => {
@@ -16,7 +16,7 @@ const listContactService = async (userId: string): Promise<TContactArray> => {
     })
 
     if (!user) {
-        throw new AppError("User not exists", 404);
+        throw new AppError("User not exists", 404)
     }
 
     const contacts: Contact[] = await contactRepository.find({
